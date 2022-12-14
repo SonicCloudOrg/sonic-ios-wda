@@ -1,6 +1,6 @@
 {
   "name": "appium-webdriveragent",
-  "version": "4.10.12",
+  "version": "4.10.13",
   "description": "Package bundling WebDriverAgent",
   "main": "./build/index.js",
   "scripts": {
@@ -13,7 +13,6 @@
     "prepare": "npm run build",
     "test": "mocha --exit --timeout 1m \"./test/unit/**/*-specs.js\"",
     "e2e-test": "mocha --exit --timeout 10m \"./test/functional/**/*-specs.js\"",
-    "prepublishOnly": "npm run bundle",
     "bundle": "node ./Scripts/build-webdriveragent.js",
     "fetch-prebuilt-wda": "node ./Scripts/fetch-prebuilt-wda.js"
   },
@@ -67,6 +66,7 @@
     "appium-xcode": "^4.0.1",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "glob": "^8.0.1",
@@ -109,7 +109,6 @@
     "WebDriverAgentRunner",
     "WebDriverAgentTests",
     "XCTWebDriverAgentLib",
-    "WebDriverAgentRunner-Runner.app.zip",
     "CHANGELOG.md"
   ]
 }
