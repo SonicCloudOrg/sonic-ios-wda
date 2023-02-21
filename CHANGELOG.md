@@ -1,3 +1,17 @@
+## [4.12.1](https://github.com/appium/WebDriverAgent/compare/v4.12.0...v4.12.1) (2023-02-20)
+
+
+### Bug Fixes
+
+* Return null if no simulated location has been previously set ([#663](https://github.com/appium/WebDriverAgent/issues/663)) ([6a5c48b](https://github.com/appium/WebDriverAgent/commit/6a5c48bd2ffc43c0f0d9bf781671bbcf171f9375))
+
+## [4.12.0](https://github.com/appium/WebDriverAgent/compare/v4.11.0...v4.12.0) (2023-02-20)
+
+
+### Features
+
+* Add support of the simulated geolocation setting ([#662](https://github.com/appium/WebDriverAgent/issues/662)) ([ebb9e60](https://github.com/appium/WebDriverAgent/commit/ebb9e60d56c0e0db9f509437ed639a3a39f6011b))
+
 ## [4.11.0](https://github.com/appium/WebDriverAgent/compare/v4.10.24...v4.11.0) (2023-02-19)
 
 
