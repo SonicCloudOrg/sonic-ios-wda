@@ -1,3 +1,17 @@
+## [5.1.2](https://github.com/appium/WebDriverAgent/compare/v5.1.1...v5.1.2) (2023-05-15)
+
+
+### Miscellaneous Chores
+
+* remove code for old os versions ([#694](https://github.com/appium/WebDriverAgent/issues/694)) ([4a9faa5](https://github.com/appium/WebDriverAgent/commit/4a9faa5f85e0615c18a5f35090335bdbc7d56ebe))
+
+## [5.1.1](https://github.com/appium/WebDriverAgent/compare/v5.1.0...v5.1.1) (2023-05-15)
+
+
+### Bug Fixes
+
+* Assert app is installed before launching or activating it ([#704](https://github.com/appium/WebDriverAgent/issues/704)) ([94e5c51](https://github.com/appium/WebDriverAgent/commit/94e5c51bce1d4518418e999b4ac466cd46ca3bc3))
+
 ## [5.1.0](https://github.com/appium/WebDriverAgent/compare/v5.0.0...v5.1.0) (2023-05-14)
 
 
