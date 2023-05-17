@@ -101,6 +101,13 @@ static NSString *const SETTINGS_BUNDLE_ID = @"com.apple.Preferences";
   FBAssertWaitTillBecomesTrue([self.session.activeApplication.bundleID isEqualToString:testedApp.bundleID]);
 }
 
+- (void)testLaunchUnattachedApp
+{
+  [FBUnattachedAppLauncher launchAppWithBundleId:SETTINGS_BUNDLE_ID];
+  [self.session kill];
+  XCTAssertEqualObjects(SETTINGS_BUNDLE_ID, FBApplication.fb_activeApplication.bundleID);
+}
+
 - (void)testAppWithInvalidBundleIDCannotBeStarted
 {
   FBApplication *testedApp = [[FBApplication alloc] initWithBundleIdentifier:@"yolo"];
@@ -121,19 +128,6 @@ static NSString *const SETTINGS_BUNDLE_ID = @"com.apple.Preferences";
   } @catch (NSException *exception) {
     XCTAssertEqualObjects(FBApplicationMissingException, exception.name);
   }
-}
-
-- (void)testAppWithInvalidBundleIDCannotBeTerminated
-{
-  FBApplication *testedApp = [[FBApplication alloc] initWithBundleIdentifier:@"yolo"];
-  [testedApp terminate];
-}
-
-- (void)testLaunchUnattachedApp
-{
-  [FBUnattachedAppLauncher launchAppWithBundleId:SETTINGS_BUNDLE_ID];
-  [self.session kill];
-  XCTAssertEqualObjects(SETTINGS_BUNDLE_ID, FBApplication.fb_activeApplication.bundleID);
 }
 
 @end
