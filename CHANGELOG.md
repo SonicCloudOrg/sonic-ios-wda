@@ -1,3 +1,17 @@
+## [5.1.6](https://github.com/appium/WebDriverAgent/compare/v5.1.5...v5.1.6) (2023-05-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump @appium/support from 3.1.11 to 4.0.0 ([#710](https://github.com/appium/WebDriverAgent/issues/710)) ([3e49523](https://github.com/appium/WebDriverAgent/commit/3e495230674a46db29ecea3b36c2ed0ea1bf2842))
+
+## [5.1.5](https://github.com/appium/WebDriverAgent/compare/v5.1.4...v5.1.5) (2023-05-18)
+
+
+### Miscellaneous Chores
+
+* Drop obsolete workarounds for coordinates calculation ([#701](https://github.com/appium/WebDriverAgent/issues/701)) ([259f731](https://github.com/appium/WebDriverAgent/commit/259f7319305b15a3f541957d3ccaa3cb12c9e1a3))
+
 ## [5.1.4](https://github.com/appium/WebDriverAgent/compare/v5.1.3...v5.1.4) (2023-05-16)
 
 
