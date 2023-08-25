@@ -1,3 +1,17 @@
+## [5.8.0](https://github.com/appium/WebDriverAgent/compare/v5.7.0...v5.8.0) (2023-08-24)
+
+
+### Features
+
+* Add wdHittable property ([#756](https://github.com/appium/WebDriverAgent/issues/756)) ([075298b](https://github.com/appium/WebDriverAgent/commit/075298b286c83ab5d4a2855e9e0bb915790b3f43))
+
+## [5.7.0](https://github.com/appium/WebDriverAgent/compare/v5.6.2...v5.7.0) (2023-08-24)
+
+
+### Features
+
+* Switch babel to typescript ([#753](https://github.com/appium/WebDriverAgent/issues/753)) ([76a4c7f](https://github.com/appium/WebDriverAgent/commit/76a4c7f066e1895acbb153ab035d6a08604277e4))
+
 ## [5.6.2](https://github.com/appium/WebDriverAgent/compare/v5.6.1...v5.6.2) (2023-08-23)
 
 
