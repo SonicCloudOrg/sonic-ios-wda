@@ -1,15 +1,9 @@
 import { BOOTSTRAP_PATH } from '../../lib/utils';
 import { WebDriverAgent } from '../../lib/webdriveragent';
 import * as utils from '../../lib/utils';
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
 import _ from 'lodash';
 import sinon from 'sinon';
-
-
-chai.should();
-chai.use(chaiAsPromised);
 
 const fakeConstructorArgs = {
   device: 'some sim',
@@ -25,6 +19,16 @@ const customAgentPath = '/path/to/some/agent/WebDriverAgent.xcodeproj';
 const customDerivedDataPath = '/path/to/some/agent/DerivedData/';
 
 describe('Constructor', function () {
+  let chai;
+
+  before(async function() {
+    chai = await import('chai');
+    const chaiAsPromised = await import('chai-as-promised');
+
+    chai.should();
+    chai.use(chaiAsPromised.default);
+  });
+
   it('should have a default wda agent if not specified', function () {
     let agent = new WebDriverAgent({}, fakeConstructorArgs);
     agent.bootstrapPath.should.eql(BOOTSTRAP_PATH);
@@ -338,5 +342,47 @@ describe('setupCaching()', function () {
       deviceRemoveAppStub.calledTwice.should.be.true;
       uninstalledBundIds.should.eql(['com.appium.WDA1', 'com.appium.WDA2']);
     });
+  });
+});
+
+
+describe('usePreinstalledWDA related functions', function () {
+  describe('bundleIdForXctest', function () {
+    it('should have xctrunner automatically', function () {
+      const args = Object.assign({}, fakeConstructorArgs);
+      args.updatedWDABundleId = 'io.appium.wda';
+      const agent = new WebDriverAgent({}, args);
+      agent.bundleIdForXctest.should.equal('io.appium.wda.xctrunner');
+    });
+
+    it('should have xctrunner automatically with default bundle id', function () {
+      const args = Object.assign({}, fakeConstructorArgs);
+      const agent = new WebDriverAgent({}, args);
+      agent.bundleIdForXctest.should.equal('com.facebook.WebDriverAgentRunner.xctrunner');
+    });
+
+    it('should allow an empty string as xctrunner suffix', function () {
+      const args = Object.assign({}, fakeConstructorArgs);
+      args.updatedWDABundleId = 'io.appium.wda';
+      args.updatedWDABundleIdSuffix = '';
+      const agent = new WebDriverAgent({}, args);
+      agent.bundleIdForXctest.should.equal('io.appium.wda');
+    });
+
+    it('should allow an empty string as xctrunner suffix with default bundle id', function () {
+      const args = Object.assign({}, fakeConstructorArgs);
+      args.updatedWDABundleIdSuffix = '';
+      const agent = new WebDriverAgent({}, args);
+      agent.bundleIdForXctest.should.equal('com.facebook.WebDriverAgentRunner');
+    });
+
+    it('should have an arbitrary xctrunner suffix', function () {
+      const args = Object.assign({}, fakeConstructorArgs);
+      args.updatedWDABundleId = 'io.appium.wda';
+      args.updatedWDABundleIdSuffix = '.customsuffix';
+      const agent = new WebDriverAgent({}, args);
+      agent.bundleIdForXctest.should.equal('io.appium.wda.customsuffix');
+    });
+
   });
 });

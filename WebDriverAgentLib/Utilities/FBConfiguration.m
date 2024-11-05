@@ -9,6 +9,10 @@
 
 #import "FBConfiguration.h"
 
+#import "AXSettings.h"
+#import "UIKeyboardImpl.h"
+#import "TIPreferencesController.h"
+
 #include <dlfcn.h>
 #import <UIKit/UIKit.h>
 
@@ -31,6 +35,7 @@ static NSString *const axSettingsClassName = @"AXSettings";
 
 static BOOL FBShouldUseTestManagerForVisibilityDetection = NO;
 static BOOL FBShouldUseSingletonTestManager = YES;
+static BOOL FBShouldRespectSystemAlerts = NO;
 
 static NSUInteger FBMjpegScalingFactor = 100;
 static BOOL FBMjpegShouldFixOrientation = NO;
@@ -371,6 +376,16 @@ static UIInterfaceOrientation FBScreenshotOrientation;
 + (int)snapshotMaxDepth
 {
   return [FBGetCustomParameterForElementSnapshot(FBSnapshotMaxDepthKey) intValue];
+}
+
++ (void)setShouldRespectSystemAlerts:(BOOL)value
+{
+  FBShouldRespectSystemAlerts = value;
+}
+
++ (BOOL)shouldRespectSystemAlerts
+{
+  return FBShouldRespectSystemAlerts;
 }
 
 + (void)setUseFirstMatch:(BOOL)enabled

@@ -7,14 +7,18 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBBaseActionsSynthesizer.h"
+#import "FBWebServerParams.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation FBWebServerParams
 
-#if !TARGET_OS_TV
-@interface FBAppiumActionsSynthesizer : FBBaseActionsSynthesizer
++ (instancetype)sharedInstance
+{
+  static FBWebServerParams *instance;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    instance = [[self alloc] init];
+  });
+  return instance;
+}
 
 @end
-#endif
-
-NS_ASSUME_NONNULL_END

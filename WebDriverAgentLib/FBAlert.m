@@ -261,15 +261,11 @@
 - (XCUIElement *)alertElement
 {
   if (nil == self.element) {
-    self.element = self.application.fb_alertElement;
-    if (nil == self.element) {
-      XCUIApplication *systemApp = XCUIApplication.fb_systemApplication;
-      for (XCUIApplication *activeApp in XCUIApplication.fb_activeApplications) {
-        if (systemApp.processID == activeApp.processID) {
-          self.element = activeApp.fb_alertElement;
-          break;
-        }
-      }
+    XCUIApplication *systemApp = XCUIApplication.fb_systemApplication;
+    if ([systemApp fb_isSameAppAs:self.application]) {
+      self.element = systemApp.fb_alertElement;
+    } else {
+      self.element = systemApp.fb_alertElement ?: self.application.fb_alertElement;
     }
   }
   return self.element;

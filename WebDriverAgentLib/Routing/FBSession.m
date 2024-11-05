@@ -18,7 +18,11 @@
 #import "FBElementCache.h"
 #import "FBExceptions.h"
 #import "FBMacros.h"
+#import "FBScreenRecordingContainer.h"
+#import "FBScreenRecordingPromise.h"
+#import "FBScreenRecordingRequest.h"
 #import "FBXCodeCompatibility.h"
+#import "FBXCTestDaemonsProxy.h"
 #import "XCUIApplication+FBQuiescence.h"
 #import "XCUIElement.h"
 
@@ -28,6 +32,8 @@
  automated algorithm to determine the active on-screen application
  */
 NSString *const FBDefaultApplicationAuto = @"auto";
+
+NSString *const FB_SAFARI_BUNDLE_ID = @"com.apple.mobilesafari";
 
 @interface FBSession ()
 @property (nullable, nonatomic) XCUIApplication *testedApplication;
@@ -137,6 +143,15 @@ static FBSession *_activeSession = nil;
     self.alertsMonitor = nil;
   }
 
+  FBScreenRecordingPromise *activeScreenRecording = FBScreenRecordingContainer.sharedInstance.screenRecordingPromise;
+  if (nil != activeScreenRecording) {
+    NSError *error;
+    if (![FBXCTestDaemonsProxy stopScreenRecordingWithUUID:activeScreenRecording.identifier error:&error]) {
+      [FBLogger logFmt:@"%@", error];
+    }
+    [FBScreenRecordingContainer.sharedInstance reset];
+  }
+
   if (nil != self.testedApplication
       && FBConfiguration.shouldTerminateApp
       && self.testedApplication.running
@@ -153,9 +168,25 @@ static FBSession *_activeSession = nil;
 
 - (XCUIApplication *)activeApplication
 {
+  BOOL isAuto = [self.defaultActiveApplication isEqualToString:FBDefaultApplicationAuto];
+  NSString *defaultBundleId = isAuto ? nil : self.defaultActiveApplication;
+
+  if (nil != defaultBundleId && [self applicationStateWithBundleId:defaultBundleId] >= XCUIApplicationStateRunningForeground) {
+    return [self makeApplicationWithBundleId:defaultBundleId];
+  }
+
   if (nil != self.testedApplication) {
     XCUIApplicationState testedAppState = self.testedApplication.state;
     if (testedAppState >= XCUIApplicationStateRunningForeground) {
+      // We look for `SBTransientOverlayWindow` elements for half modals. See https://github.com/appium/WebDriverAgent/pull/946
+      NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"%K == %@ OR %K == %@",
+                                      @"elementType", @(XCUIElementTypeAlert), 
+                                      @"identifier", @"SBTransientOverlayWindow"];
+      if ([FBConfiguration shouldRespectSystemAlerts]
+          && [[XCUIApplication.fb_systemApplication descendantsMatchingType:XCUIElementTypeAny]
+              matchingPredicate:searchPredicate].count > 0) {
+        return XCUIApplication.fb_systemApplication;
+      }
       return (XCUIApplication *)self.testedApplication;
     }
     if (self.isTestedApplicationExpectedToRun && testedAppState <= XCUIApplicationStateNotRunning) {
@@ -164,9 +195,6 @@ static FBSession *_activeSession = nil;
     }
   }
 
-  NSString *defaultBundleId = [self.defaultActiveApplication isEqualToString:FBDefaultApplicationAuto]
-    ? nil
-    : self.defaultActiveApplication;
   return [XCUIApplication fb_activeApplicationWithDefaultBundleId:defaultBundleId];
 }
 

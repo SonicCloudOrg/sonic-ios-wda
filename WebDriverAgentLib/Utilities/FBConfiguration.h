@@ -9,10 +9,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "AXSettings.h"
-#import "UIKeyboardImpl.h"
-#import "TIPreferencesController.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *const FBSnapshotMaxDepthKey;
@@ -65,6 +61,10 @@ extern NSString *const FBSnapshotMaxDepthKey;
 /* Use singleton test manager proxy */
 + (void)setShouldUseSingletonTestManager:(BOOL)value;
 + (BOOL)shouldUseSingletonTestManager;
+
+/* Enforces WDA to verify the presense of system alerts while checking for an active app */
++ (void)setShouldRespectSystemAlerts:(BOOL)value;
++ (BOOL)shouldRespectSystemAlerts;
 
 /**
  * Extract switch value from arguments

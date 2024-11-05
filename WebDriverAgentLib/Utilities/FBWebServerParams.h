@@ -7,26 +7,17 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <XCTest/XCTest.h>
+#import <Foundation/Foundation.h>
 
-#import "FBIntegrationTestCase.h"
-#import "FBScreen.h"
+NS_ASSUME_NONNULL_BEGIN
 
-@interface FBScreenTests : FBIntegrationTestCase
-@end
+@interface FBWebServerParams : NSObject
 
-@implementation FBScreenTests
+/** The local port number WDA server is running on */
+@property (nonatomic, nullable) NSNumber *port;
 
-- (void)setUp
-{
-  [super setUp];
-  [self launchApplication];
-}
-
-- (void)testScreenScale
-{
-  XCTAssertTrue([FBScreen scale] >= 2);
-}
++ (id)sharedInstance;
 
 @end
 
+NS_ASSUME_NONNULL_END
