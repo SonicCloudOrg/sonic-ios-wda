@@ -1,3 +1,21 @@
+## [8.12.0](https://github.com/appium/WebDriverAgent/compare/v8.11.3...v8.12.0) (2024-12-13)
+
+### Features
+
+* look for critical notification in respectSystemAlerts ([#962](https://github.com/appium/WebDriverAgent/issues/962)) ([916c8c5](https://github.com/appium/WebDriverAgent/commit/916c8c557a9366608df211f33b5b7fbb0354dad3))
+
+## [8.11.3](https://github.com/appium/WebDriverAgent/compare/v8.11.2...v8.11.3) (2024-12-06)
+
+### Miscellaneous Chores
+
+* **deps:** bump @appium/support from 5.1.8 to 6.0.0 ([#960](https://github.com/appium/WebDriverAgent/issues/960)) ([dbeb09c](https://github.com/appium/WebDriverAgent/commit/dbeb09c89f8c02e00a7bdffe7899650d435f3575))
+
+## [8.11.2](https://github.com/appium/WebDriverAgent/compare/v8.11.1...v8.11.2) (2024-12-03)
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump mocha from 10.8.2 to 11.0.1 ([#959](https://github.com/appium/WebDriverAgent/issues/959)) ([55b49c8](https://github.com/appium/WebDriverAgent/commit/55b49c83581c9e88f70806d98015238de3104f19))
+
 ## [8.11.1](https://github.com/appium/WebDriverAgent/compare/v8.11.0...v8.11.1) (2024-11-11)
 
 ### Miscellaneous Chores
