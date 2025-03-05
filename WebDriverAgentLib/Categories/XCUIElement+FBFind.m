@@ -110,7 +110,6 @@
     matchingSnapshots = @[snapshot];
   }
   return [self fb_filterDescendantsWithSnapshots:matchingSnapshots
-                                         selfUID:[FBXCElementSnapshotWrapper wdUIDWithSnapshot:self.lastSnapshot]
                                     onlyChildren:NO];
 }
 
@@ -122,7 +121,9 @@
 {
   NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id<FBXCElementSnapshot> snapshot,
                                                                  NSDictionary<NSString *,id> * _Nullable bindings) {
-    return [[FBXCElementSnapshotWrapper wdNameWithSnapshot:snapshot] isEqualToString:accessibilityId];
+    @autoreleasepool {
+      return [[FBXCElementSnapshotWrapper wdNameWithSnapshot:snapshot] isEqualToString:accessibilityId];
+    }
   }];
   return [self fb_descendantsMatchingPredicate:predicate
                    shouldReturnAfterFirstMatch:shouldReturnAfterFirstMatch];

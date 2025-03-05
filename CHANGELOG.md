@@ -1,3 +1,61 @@
+## [9.0.6](https://github.com/appium/WebDriverAgent/compare/v9.0.5...v9.0.6) (2025-02-28)
+
+### Bug Fixes
+
+* optimize LRU cache ([#985](https://github.com/appium/WebDriverAgent/issues/985)) ([46dc417](https://github.com/appium/WebDriverAgent/commit/46dc417da9f4a843838b414c0b154d6f478dbc0b))
+
+## [9.0.5](https://github.com/appium/WebDriverAgent/compare/v9.0.4...v9.0.5) (2025-02-26)
+
+### Bug Fixes
+
+* add autorelease pool to drain temporary objects ([#983](https://github.com/appium/WebDriverAgent/issues/983)) ([f92f1cd](https://github.com/appium/WebDriverAgent/commit/f92f1cde0fe914086103a110844bbe3bc0e3c4a6))
+
+## [9.0.4](https://github.com/appium/WebDriverAgent/compare/v9.0.3...v9.0.4) (2025-02-21)
+
+### Bug Fixes
+
+* Accept reqBasePath proxy option ([#982](https://github.com/appium/WebDriverAgent/issues/982)) ([19efbdd](https://github.com/appium/WebDriverAgent/commit/19efbdd69ff9edff20c0c318bd39c29963d4d51d))
+
+## [9.0.3](https://github.com/appium/WebDriverAgent/compare/v9.0.2...v9.0.3) (2025-02-05)
+
+### Bug Fixes
+
+* add nullable signature ([#979](https://github.com/appium/WebDriverAgent/issues/979)) ([34b303c](https://github.com/appium/WebDriverAgent/commit/34b303c4e226d6a75a45a14eee7ca5e253e67737))
+
+## [9.0.2](https://github.com/appium/WebDriverAgent/compare/v9.0.1...v9.0.2) (2025-02-03)
+
+### Bug Fixes
+
+* update docs link in xcodebuild error message ([#978](https://github.com/appium/WebDriverAgent/issues/978)) ([ea3863a](https://github.com/appium/WebDriverAgent/commit/ea3863a67d5cfa8bc2e48a1dc2c59052acd47937))
+
+## [9.0.1](https://github.com/appium/WebDriverAgent/compare/v9.0.0...v9.0.1) (2025-01-17)
+
+### Miscellaneous Chores
+
+* Optimize stable instance retrieval ([#973](https://github.com/appium/WebDriverAgent/issues/973)) ([f2c752d](https://github.com/appium/WebDriverAgent/commit/f2c752db4707b3864efb62b95b64abb487d28e4b))
+
+## [9.0.0](https://github.com/appium/WebDriverAgent/compare/v8.12.2...v9.0.0) (2025-01-16)
+
+### ⚠ BREAKING CHANGES
+
+* snapshotTimeout and customSnapshotTimeout settings have been removed as a result of the custom snapshotting logic removal
+
+### Features
+
+* Refactor snapshotting mechanism ([#970](https://github.com/appium/WebDriverAgent/issues/970)) ([08f1306](https://github.com/appium/WebDriverAgent/commit/08f13060119c710f53b34a98c95683287c0365a0))
+
+## [8.12.2](https://github.com/appium/WebDriverAgent/compare/v8.12.1...v8.12.2) (2025-01-13)
+
+### Miscellaneous Chores
+
+* Exclude element visibility and accessibility info from the accessibility audit details ([#968](https://github.com/appium/WebDriverAgent/issues/968)) ([f62afc3](https://github.com/appium/WebDriverAgent/commit/f62afc372c123bdd8dd7bb493f653bb128144d24))
+
+## [8.12.1](https://github.com/appium/WebDriverAgent/compare/v8.12.0...v8.12.1) (2025-01-03)
+
+### Miscellaneous Chores
+
+* Bump eslint ([#965](https://github.com/appium/WebDriverAgent/issues/965)) ([17f49ec](https://github.com/appium/WebDriverAgent/commit/17f49ec5a54e97b0ef0d20a3e39fc96b32575e43))
+
 ## [8.12.0](https://github.com/appium/WebDriverAgent/compare/v8.11.3...v8.12.0) (2024-12-13)
 
 ### Features
